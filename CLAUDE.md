@@ -183,9 +183,16 @@ section describes the shared installer and applies to both repos.
      from the URL's last segment (setup.ps1, `$name = ($url ... -split '/')[-1]`).
 
   The installer logic itself is identical. README.md and `docs/ARCHITECTURE.md` were
-  reworded to name `raintuur/bank`. The one deliberate leftover is
-  `docs/examples/Vali-IT-kokkuvote.html`, which still carries upstream links and `bank41`
-  paths — it is an archived summary from a past run, not a template.
+  reworded to name `raintuur/bank`. `docs/examples/Vali-IT-kokkuvote.html` deliberately
+  keeps upstream links and `bank41` paths — it is an archived summary from a past run,
+  not a template.
+- **OPEN: `docs/install/000-Vali-IT-tarkvara-ja-projekti-installer.pdf` still prints the
+  UPSTREAM one-liner** (`.../bcs-hub/vali-it-installer/main/setup.ps1`) for both install
+  and uninstall. It is the first guide a student opens, and nothing in the code or configs
+  references it — it is handed out directly — so a workshop student following it would run
+  the upstream installer instead of this one. The PDF is a Confluence export and cannot be
+  patched from here; it needs a re-export with the workshop URL. Every other guide PDF is
+  URL-free and works for both repos.
 - **Workshop trimming is not done yet.** PostgreSQL, Docker Desktop, IntelliJ and the
   course-project preload are all still installed. Dropping any of them is config-driven
   (one line in `config/*.conf`), but it is an open decision, not an oversight.
