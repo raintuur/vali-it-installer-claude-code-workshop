@@ -73,7 +73,8 @@ nimekirjas serverite käivitamise samm koos kaustateega (juhend
 allalaadimine ebaõnnestus, viitab punane kirje käsitsi allalaadimise
 juhendile ([023](docs/install/023-Kursuse-projekti-allalaadimine.pdf))
 koos repo lingiga. Uue kursuse jaoks piisab repo-URL-i muutmisest
-`course.conf`-is (bank41 → bank42 → ...).
+`course.conf`-is; kaustanimi tuletatakse URL-i viimasest osast. Selles
+repos on kursuse projektiks `raintuur/bank`.
 
 ## Käsitsi sammud pärast paigaldust
 

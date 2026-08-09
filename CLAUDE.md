@@ -182,10 +182,10 @@ section describes the shared installer and applies to both repos.
      `%USERPROFILE%\vali-it\bank` instead of `...\bank41`. The folder name is derived
      from the URL's last segment (setup.ps1, `$name = ($url ... -split '/')[-1]`).
 
-  The installer logic itself is identical. `docs/examples/Vali-IT-kokkuvote.html` still
-  carries upstream links and `bank41` paths on purpose — it is an archived summary from a
-  past run, not a template. README.md and `docs/ARCHITECTURE.md` still mention `bank41`
-  as the example course repo.
+  The installer logic itself is identical. README.md and `docs/ARCHITECTURE.md` were
+  reworded to name `raintuur/bank`. The one deliberate leftover is
+  `docs/examples/Vali-IT-kokkuvote.html`, which still carries upstream links and `bank41`
+  paths — it is an archived summary from a past run, not a template.
 - **Workshop trimming is not done yet.** PostgreSQL, Docker Desktop, IntelliJ and the
   course-project preload are all still installed. Dropping any of them is config-driven
   (one line in `config/*.conf`), but it is an open decision, not an oversight.

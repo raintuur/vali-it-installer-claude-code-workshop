@@ -185,8 +185,9 @@ refaktoorimiseta.
 ## Kursuse projekti eellaadimine
 
 Viimane samm setup.ps1-s (`Invoke-CourseSetup`, pärast Ubuntu osa, enne
-kokkuvõtet). Loeb `config/course.conf` (uus kursus = URL-i vahetus:
-bank41 → bank42 → ...); iga rea kohta:
+kokkuvõtet). Loeb `config/course.conf` (uus kursus = URL-i vahetus; kaustanimi
+tuletatakse URL-i viimasest osast — selles repos `raintuur/bank` →
+`%USERPROFILE%\vali-it\bank`); iga rea kohta:
 
 1. **JDK on Windowsi rakenduste nimekirjas** — Temurin 21 (sama major
    kui WSL-is) rida `windows-apps.conf`-is; MSI override lisab PATH-i ja
