@@ -151,7 +151,7 @@ directly.
   `irm | iex` (the student path). Overrides are env vars: `$env:ITC_DISTRO`, `$env:ITC_BRANCH`.
 - **Public GitHub repo: `raintuur/vali-it-installer-claude-code-workshop`**; students fetch `main` directly
   (`$RepoSlug` in setup.ps1, one-liner URL in README.md). Nothing sensitive in the repo,
-  ever.
+  ever. This repo is a copy — see "Upstream" below.
 
 ## Hard Requirements (from the spec)
 
@@ -163,3 +163,39 @@ directly.
   shows a BOM as a red "command not found" error on line 1, while HTTP charset handles the
   decoding anyway. Trade-off: running the *file* locally in PS 5.1 mangles Estonian
   characters — test locally with PowerShell 7 (`pwsh`). Keep CRLF/LF rules from `.gitattributes`.
+
+
+## Upstream (this repo is a copy, 2026-08-09)
+
+This repo is a **copy of `bcs-hub/vali-it-installer`**, made for a Claude Code workshop.
+It was cloned with full history and pushed to a fresh remote — it is NOT a GitHub fork
+and NOT a template, so GitHub shows no link between the two. Everything above this
+section describes the shared installer and applies to both repos.
+
+- **Upstream is the original**: `bcs-hub/vali-it-installer` is the live course installer
+  that real students fetch. Fixes that are not workshop-specific belong there first.
+- **The only intended difference** is the repo slug: `$RepoSlug` (setup.ps1,
+  uninstall.ps1) plus the one-liner URLs in README.md, CLAUDE.md and `docs/`.
+  The installer logic is identical. `docs/examples/Vali-IT-kokkuvote.html` still carries
+  the upstream link on purpose — it is an archived summary from a past run, not a template.
+- **Workshop trimming is not done yet.** PostgreSQL, Docker Desktop, IntelliJ and the
+  `bank41` course preload are all still installed. Dropping any of them is config-driven
+  (one line in `config/*.conf`), but it is an open decision, not an oversight.
+- **`$InstallDirName` is still `vali-it-installer`**, the same as upstream, so both
+  installers extract to `~/vali-it-installer` inside Ubuntu — running one after the other
+  overwrites the other's copy. Change it here if the two must coexist on one machine.
+- **Porting changes in either direction**: cherry-pick, then re-check that `$RepoSlug`
+  survived — a commit touching setup.ps1 line 31 carries the wrong slug across, which
+  would point students at the other repo.
+- **Permissions** (checked 2026-08-09): the `gh` CLI is authenticated as `raintuur`,
+  whose only org is `Tallinna-Polutehnikum`. On `bcs-hub` that account has `push` but not
+  `admin` — it can push to upstream, but cannot create repos there. That is why this copy
+  lives under the personal account.
+- **Verify a change actually reaches students** (all three must return 200 / BOM False):
+
+```bash
+curl -s https://raw.githubusercontent.com/raintuur/vali-it-installer-claude-code-workshop/main/setup.ps1 |
+  python3 -c "import sys; d=sys.stdin.buffer.read(); print('BOM:', d[:3]==b'\xef\xbb\xbf')"
+curl -sI -L https://github.com/raintuur/vali-it-installer-claude-code-workshop/archive/refs/heads/main.tar.gz | grep ^HTTP
+curl -sI -L "https://github.com/raintuur/vali-it-installer-claude-code-workshop/blob/main/docs/install/027-IntelliJ-plugin-Claude-Code.pdf?raw=true" | grep ^HTTP
+```
