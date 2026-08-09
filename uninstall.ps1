@@ -7,7 +7,7 @@
 # things" rule. Primarily an instructor tool for resetting test machines.
 #
 # Run in an elevated PowerShell:
-#   irm https://raw.githubusercontent.com/bcs-hub/vali-it-installer/main/uninstall.ps1 | iex
+#   irm https://raw.githubusercontent.com/raintuur/vali-it-installer-claude-code-workshop/main/uninstall.ps1 | iex
 #
 # NOTE: no param() block on purpose — Windows PowerShell 5.1 cannot parse a
 # top-level param block through 'irm ... | iex'. Overrides are env vars:
@@ -29,7 +29,7 @@ $Purge = ($env:ITC_PURGE -eq '1')
 $AutoYes = ($env:ITC_YES -eq '1')
 
 $ErrorActionPreference = 'Continue'
-$RepoSlug = 'bcs-hub/vali-it-installer'
+$RepoSlug = 'raintuur/vali-it-installer-claude-code-workshop'
 $KnownDistros = @('Ubuntu-24.04', 'Ubuntu-22.04', 'Ubuntu')
 $DbName = 'vali_it'
 $PgSuperPassword = 'student123'

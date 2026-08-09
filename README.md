@@ -11,7 +11,7 @@ koos kõigi käsurea-tööriistadega. Mõeldud programmeerimiskursuse
 2. Kleebi terminali see rida ja vajuta Enter:
 
    ```powershell
-   irm https://raw.githubusercontent.com/bcs-hub/vali-it-installer/main/setup.ps1 | iex
+   irm https://raw.githubusercontent.com/raintuur/vali-it-installer-claude-code-workshop/main/setup.ps1 | iex
    ```
 
 3. Kui skript palub arvuti **taaskäivitada**, tee seda ja käivita pärast
@@ -175,7 +175,7 @@ mille ta **ise** paigaldas — mis oli masinas juba enne, sinna ei kuulu.
 Eemaldaja võtab vaikimisi maha ainult manifestis oleva:
 
 ```powershell
-irm https://raw.githubusercontent.com/bcs-hub/vali-it-installer/main/uninstall.ps1 | iex
+irm https://raw.githubusercontent.com/raintuur/vali-it-installer-claude-code-workshop/main/uninstall.ps1 | iex
 ```
 
 Enne kustutamist näidatakse nimekirja ja küsitakse kinnitust (`jah`,
