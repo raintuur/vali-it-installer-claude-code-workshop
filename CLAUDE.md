@@ -174,12 +174,20 @@ section describes the shared installer and applies to both repos.
 
 - **Upstream is the original**: `bcs-hub/vali-it-installer` is the live course installer
   that real students fetch. Fixes that are not workshop-specific belong there first.
-- **The only intended difference** is the repo slug: `$RepoSlug` (setup.ps1,
-  uninstall.ps1) plus the one-liner URLs in README.md, CLAUDE.md and `docs/`.
-  The installer logic is identical. `docs/examples/Vali-IT-kokkuvote.html` still carries
-  the upstream link on purpose — it is an archived summary from a past run, not a template.
+- **Two intended differences from upstream**, both data, not logic:
+  1. the repo slug — `$RepoSlug` (setup.ps1, uninstall.ps1) plus the one-liner URLs in
+     README.md, CLAUDE.md and `docs/`;
+  2. the course repo — `config/course.conf` points at `raintuur/bank` (a full mirror of
+     upstream's `bcs-hub/bank41`, same commit SHA), so the project lands in
+     `%USERPROFILE%\vali-it\bank` instead of `...\bank41`. The folder name is derived
+     from the URL's last segment (setup.ps1, `$name = ($url ... -split '/')[-1]`).
+
+  The installer logic itself is identical. `docs/examples/Vali-IT-kokkuvote.html` still
+  carries upstream links and `bank41` paths on purpose — it is an archived summary from a
+  past run, not a template. README.md and `docs/ARCHITECTURE.md` still mention `bank41`
+  as the example course repo.
 - **Workshop trimming is not done yet.** PostgreSQL, Docker Desktop, IntelliJ and the
-  `bank41` course preload are all still installed. Dropping any of them is config-driven
+  course-project preload are all still installed. Dropping any of them is config-driven
   (one line in `config/*.conf`), but it is an open decision, not an oversight.
 - **`$InstallDirName` is still `vali-it-installer`**, the same as upstream, so both
   installers extract to `~/vali-it-installer` inside Ubuntu — running one after the other
